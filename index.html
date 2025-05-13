@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- icon Link  -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <!-- Font Link  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="chatbot-popup">
+
+        <!-- Chatbot Header -->
+
+        <div class="chat-header">
+            <div class="header-info">
+                <img class="chatbot-logo" src="./public/chatbot-blue.png" alt="chatbot-icon">
+                <h2 class="logo-text">Chatbot</h2>
+            </div>
+            <button class="material-symbols-rounded" id="close-chatbot"><i class="uis uis-angle-down"></i></button>
+        </div>
+
+        <!-- Chatbot Body -->
+
+        <div class="chat-body">
+            <div class="message bot-message">
+                <img class="bot-avatar" src="./public/chatbot-white.png" alt="chatbot-icon" height="50" width="50">
+                <div class="message-text">Hey there 👋<br> How can I help you today?</div>
+            </div>
+        </div>
+
+        <!-- Chatbot Footer -->
+
+        <div class="chat-footer">
+            <form action="#" class="chat-form">
+                <textarea placeholder="Message..." class="message-input" required></textarea>
+                <div class="chat-controls">
+                    <button type="button" id="emoji-picker" class="material-symbols-rounded"><i class="uil uil-smile"></i></button>
+                    <div class="file-upload-wrapper">
+                        <input type="file" accept="images/*" id="file-input" hidden>
+                        <img src="#">
+                        <button type="button" id="file-upload" class="material-symbols-rounded"><i class="uis uis-paperclip"></i></button>
+                        <button type="button" id="file-cancel" class="material-symbols-rounded">x</button>
+                    </div>
+                    <button type="submit" id="send-message" class="material-symbols-rounded"><i class="uil uil-arrow-up"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!-- 59:57 -->
