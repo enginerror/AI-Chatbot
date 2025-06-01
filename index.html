@@ -8,13 +8,15 @@
     <!-- icon Link  -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-    <!-- Font Link  -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- web icon -->
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/128/18355/18355249.png">
 </head>
 
 <body>
+
+    <div class="absolute inset-0 justify-center">
+        <div class="bg-shape1 bg-primary opacity-50 bg-blur"></div>
+    </div>
 
     <div class="chatbot-popup">
 
@@ -22,10 +24,9 @@
 
         <div class="chat-header">
             <div class="header-info">
-                <img class="chatbot-logo" src="./public/chatbot-blue.png" alt="chatbot-icon">
                 <h2 class="logo-text">Chatbot</h2>
             </div>
-            <button class="material-symbols-rounded" id="close-chatbot"><i class="uis uis-angle-down"></i></button>
+            <!-- <button class="material-symbols-rounded" id="close-chatbot"><i class="uis uis-angle-down"></i></button> -->
         </div>
 
         <!-- Chatbot Body -->
@@ -43,7 +44,7 @@
             <form action="#" class="chat-form">
                 <textarea placeholder="Message..." class="message-input" required></textarea>
                 <div class="chat-controls">
-                    <button type="button" id="emoji-picker" class="material-symbols-rounded"><i class="uil uil-smile"></i></button>
+                    <!-- <button type="button" id="emoji-picker" class="material-symbols-rounded"><i class="uil uil-smile"></i></button> -->
                     <div class="file-upload-wrapper">
                         <input type="file" accept="images/*" id="file-input" hidden>
                         <img src="#">
