@@ -1,67 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- icon Link  -->
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-    <!-- web icon -->
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/128/18355/18355249.png">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gemini Chat Interface</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
-
-    <div class="absolute inset-0 justify-center">
-        <div class="bg-shape1 bg-primary opacity-50 bg-blur"></div>
+  <body>
+    <div class="header">
+      <p class="logo-text">Chatbot</p>
     </div>
 
-    <div class="chatbot-popup">
-
-        <!-- Chatbot Header -->
-
-        <div class="chat-header">
-            <div class="header-info">
-                <h2 class="logo-text">Chatbot</h2>
-            </div>
-            <!-- <button class="material-symbols-rounded" id="close-chatbot"><i class="uis uis-angle-down"></i></button> -->
+    <div class="main-content">
+      <div class="">
+        <div class="greeting">
+          <h1>
+            <span class="hello">Hello,</span> <span class="name">bro.</span>
+          </h1>
+          <h2>How can I help you today?</h2>
         </div>
 
-        <!-- Chatbot Body -->
-
-        <div class="chat-body">
-            <div class="message bot-message">
-                <img class="bot-avatar" src="./public/chatbot-white.png" alt="chatbot-icon" height="50" width="50">
-                <div class="message-text">Hey there 👋<br> How can I help you today?</div>
-            </div>
+        <div class="suggestion-cards" aria-label="Suggested prompts">
+          <button
+            class="suggestion-card"
+            data-prompt="Summarize the latest tech news in two sentences."
+          >
+            Summarize the latest tech news.
+          </button>
+          <button
+            class="suggestion-card"
+            data-prompt="Explain quantum computing like I am new to the topic."
+          >
+            Explain quantum computing simply.
+          </button>
+          <button
+            class="suggestion-card"
+            data-prompt="Give me a creative writing prompt about space exploration."
+          >
+            Creative writing prompt about space.
+          </button>
+          <button
+            class="suggestion-card"
+            data-prompt="Suggest a quick dinner recipe using tomatoes and basil."
+          >
+            Dinner ideas with tomatoes and basil.
+          </button>
         </div>
 
-        <!-- Chatbot Footer -->
+        <div class="input-container">
+          <input
+            type="text"
+            id="prompt-input"
+            class="prompt-input"
+            placeholder="Enter a prompt here"
+          />
 
-        <div class="chat-footer">
-            <form action="#" class="chat-form">
-                <textarea placeholder="Message..." class="message-input" required></textarea>
-                <div class="chat-controls">
-                    <!-- <button type="button" id="emoji-picker" class="material-symbols-rounded"><i class="uil uil-smile"></i></button> -->
-                    <div class="file-upload-wrapper">
-                        <input type="file" accept="images/*" id="file-input" hidden>
-                        <img src="#">
-                        <button type="button" id="file-upload" class="material-symbols-rounded"><i class="uis uis-paperclip"></i></button>
-                        <button type="button" id="file-cancel" class="material-symbols-rounded">x</button>
-                    </div>
-                    <button type="submit" id="send-message" class="material-symbols-rounded"><i class="uil uil-arrow-up"></i></button>
-                </div>
-            </form>
+          <div class="input-actions">
+            <input
+              type="file"
+              id="file-input"
+              accept="image/*"
+              multiple
+              class="hidden-input"
+              title="Upload images"
+            />
+            <button id="upload-btn" class="icon-btn" title="Upload image">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-paperclip-icon lucide-paperclip"
+              >
+                <path
+                  d="m16 6-8.414 8.586a2 2 0 0 0 2.829 2.829l8.414-8.586a4 4 0 1 0-5.657-5.657l-8.379 8.551a6 6 0 1 0 8.485 8.485l8.379-8.551"
+                />
+              </svg>
+            </button>
+
+            <button id="send-btn" class="icon-btn" title="Send message">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-send-horizontal-icon lucide-send-horizontal"
+              >
+                <path
+                  d="M3.714 3.048a.498.498 0 0 0-.683.627l2.843 7.627a2 2 0 0 1 0 1.396l-2.842 7.627a.498.498 0 0 0 .682.627l18-8.5a.5.5 0 0 0 0-.904z"
+                />
+                <path d="M6 12h16" />
+              </svg>
+            </button>
+          </div>
         </div>
+
+        <!-- Image Preview Container -->
+        <div
+          id="image-preview-container"
+          class="image-preview-container hidden"
+        >
+          <div id="images-grid" class="images-grid">
+            <!-- Images will be dynamically added here -->
+          </div>
+        </div>
+      </div>
     </div>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
-
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
-
-<!-- 59:57 -->
