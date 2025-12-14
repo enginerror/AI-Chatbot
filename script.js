@@ -77,6 +77,7 @@ const generateBotResponse = async (
 
     const apiResponseText = (data.choices?.[0]?.message?.content || "")
       .replace(/\*\*(.*?)\*\*/g, "$1")
+      .replace(/^\s*\*\s+/gm, "- ")
       .trim();
 
     if (!apiResponseText) {
@@ -84,7 +85,7 @@ const generateBotResponse = async (
     }
 
     if (messageElement) {
-      messageElement.innerText = apiResponseText;
+      typeMessageText(messageElement, apiResponseText);
     }
   } catch (error) {
     if (error.name === "AbortError") {
@@ -148,6 +149,71 @@ const clearCurrentAttachments = () => {
     data: null,
     mime_type: null,
   };
+};
+
+// Types bot responses character by character for a typing effect.
+const typeMessageText = (element, text) => {
+  if (!element) {
+    return;
+  }
+
+  const characters = Array.from(text);
+  const totalLength = characters.length;
+
+  if (totalLength === 0) {
+    element.innerText = "";
+    delete element.dataset.typingId;
+    element.style.removeProperty("color");
+    return;
+  }
+
+  const typingId = `${Date.now().toString(36)}-${Math.random()
+    .toString(36)
+    .slice(2, 8)}`;
+  element.dataset.typingId = typingId;
+  element.innerText = "";
+  element.style.removeProperty("color");
+
+  const baseDelay = totalLength > 160 ? 10 : totalLength > 80 ? 14 : 20;
+
+  const typeNextChar = (index) => {
+    if (
+      !element.isConnected ||
+      element.dataset.typingId !== typingId ||
+      index >= totalLength
+    ) {
+      delete element.dataset.typingId;
+      return;
+    }
+
+    element.innerText = characters.slice(0, index + 1).join("");
+
+    if (index === totalLength - 1) {
+      delete element.dataset.typingId;
+      return;
+    }
+
+    const currentChar = characters[index];
+    let delay = baseDelay;
+
+    if (currentChar === "." || currentChar === "?" || currentChar === "!") {
+      delay += 80;
+    } else if (
+      currentChar === "," ||
+      currentChar === ";" ||
+      currentChar === ":"
+    ) {
+      delay += 50;
+    } else if (currentChar === "\n") {
+      delay += 120;
+    } else if (currentChar === " ") {
+      delay = Math.max(8, delay - 6);
+    }
+
+    window.setTimeout(() => typeNextChar(index + 1), delay);
+  };
+
+  typeNextChar(0);
 };
 
 const removeExistingEditButtons = () => {
@@ -459,6 +525,7 @@ const handleOutgoingMessage = (e, overrideMessage = null) => {
   }
   chatBody.classList.remove("hidden");
   suggestionContainer?.classList.add("hidden");
+  document.body.classList.add("chat-active");
 
   removeExistingEditButtons();
 
