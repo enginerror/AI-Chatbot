@@ -1,0 +1,5 @@
+{
+  "buildCommand": "npm install",
+  "outputDirectory": ".",
+  "env": ["GROQ_API_KEY", "GROQ_MODEL"]
+}
